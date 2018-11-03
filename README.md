@@ -8,7 +8,7 @@ Water access is a basic human right, and is essential to the life, health, and d
 
 The tools you build, and the insights you glean, can both help UNHCR make a difference on the ground, and raise awareness for the refugee crisis.
 
-The `Data Summary` notebook contains a rough overview of the datasets, along with some utility functions that you may find helpful (for example to calculate geographical distances based on longitude and latitude). The `UNHCR_data` subfolder contains raw data. The coverage of the borehole data and the tent geolocation data does not necessarily overlap. An additional file, `filtered_geolocation_data.json`, only contains entries for tents that are within 50km of a borehole. The function that generated this dataset is at the end of the `Data Summary` notebook. Note that the function may take a while to run. 
+The `Data Summary` notebook contains a rough overview of the datasets, along with some utility functions that you may find helpful (for example to calculate geographical distances based on longitude and latitude). The coverage of the borehole data and the tent geolocation data does not necessarily overlap. An additional file, `filtered_geolocation_data.json`, only contains entries for tents that are within 50km of a borehole. The function that generated this dataset is at the end of the `Data Summary` notebook. Note that the function may take a while to run. 
 
 ## UNHCR WASH Resources
 http://wash.unhcr.org/
@@ -23,10 +23,11 @@ http://wash.unhcr.org/unhcr-wash-manual-for-refugee-settings/
 ## Datasets
 
 ### UNHCR WASH Borehole Data
-A csv file can be downloaded here: http://wash.unhcr.org/wash-gis-portal/. It is also in the `UNHCR_data` folder.
+A csv file can be downloaded here: http://wash.unhcr.org/wash-gis-portal/ 
 
 ### Refugee Camp Geolocation Data
-Contained in the `UNHCR_data` subfolder. Note that camp and borehole datasets do not perfectly overlap, and that it will be necessary to identify for which camps both geolocation and borehole data is present. 
+Contains raw tags, quality controlled tags, and filtered tags. Note that the filtering has not been checked too thorougly.
+https://s3.amazonaws.com/hackabetterworld2018/wateraccess_challenge.zip
 
 ### General Purpose Satellite Imagery
 GBDX (https://platform.digitalglobe.com/gbdx/) provides vast amounts of sattelite imagery.
