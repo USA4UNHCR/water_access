@@ -53,7 +53,7 @@ if __name__ == '__main__':
     CENTER_LOCATION = (3.734,18.761778)
     MAX_DISTANCE = 25
     OUTPUT_PATH = "LAT%1.5f_LON%1.5f_RANGE%1.3f" % (CENTER_LOCATION[0],CENTER_LOCATION[1],MAX_DISTANCE)
-    OUTPUT_PATH = OUTPUT_PATH.replace('.','D') + '.json'
+    OUTPUT_PATH = '../' + OUTPUT_PATH.replace('.','D') + '.json'
     
     fg = get_filtered_geojson(INPUT_PATH,CENTER_LOCATION,MAX_DISTANCE)
     with open(OUTPUT_PATH,'w') as file:
