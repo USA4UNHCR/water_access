@@ -28,13 +28,15 @@
         });
         var data_layer = new google.maps.Data({map: map});
         var data_layer_2 = new google.maps.Data({map: map});
+        var data_layer_3 = new google.maps.Data({map: map});
 
-        var well_icon = 'file:///Users/JakeGray/Desktop/unhcr_play/water_access/well.png'; //hard coded local file, no no
-        var tent_icon = 'file:///Users/JakeGray/Desktop/unhcr_play/water_access/tent-1.png'; //hard coded local file, no no
+        var tent_icon_green = 'file:///Users/JakeGray/Desktop/unhcr_play/water_access/tent-1.png'; //hard coded local file, no no
+        var tent_icon_yellow = 'file:///Users/JakeGray/Desktop/unhcr_play/water_access/yellow_tent.png'; //hard coded local file, no no
+        var tent_icon_red = 'file:///Users/JakeGray/Desktop/unhcr_play/water_access/red_tent.png'; //hard coded local file, no no
+
+        data_layer.setStyle ({icon: tent_icon_green}); 
         
-        data_layer_2.setStyle ({icon: tent_icon}); 
-        
-        data_layer_2.loadGeoJson('file:///Users/JakeGray/Desktop/unhcr_play/water_access/LAT3D73400_LON18D76178_RANGE25D000.json');
+        data_layer.loadGeoJson('file:///Users/JakeGray/Desktop/unhcr_play/water_access/LAT3D73400_LON18D76178_RANGE25D000.json');
 
 
         var script = document.createElement('script');
@@ -63,6 +65,7 @@
             map: map,
             radius: 500,
             strokeColor: '#FF0000',
+            strokeWeight: 0.9,
             fillOpacity: 0,
 
           })
@@ -72,6 +75,7 @@
             map: map,
             radius: 200,
             strokeColor: '#FFFF00',
+            strokeWeight: 0.9,
             fillOpacity: 0,
 
           })
