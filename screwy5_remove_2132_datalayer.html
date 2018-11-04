@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: new google.maps.LatLng(3.734,18.761778),
+          mapTypeId: 'hybrid'
+          
+        });
+        var data_layer = new google.maps.Data({map: map});
+        var data_layer_2 = new google.maps.Data({map: map});
+        var data_layer_3 = new google.maps.Data({map: map});
+
+        var tent_icon_green = 'file:///Users/JakeGray/Desktop/unhcr_play/water_access/tent-1.png'; //hard coded local file, no no
+        var tent_icon_yellow = 'file:///Users/JakeGray/Desktop/unhcr_play/water_access/yellow_tent.png'; //hard coded local file, no no
+        var tent_icon_red = 'file:///Users/JakeGray/Desktop/unhcr_play/water_access/red_tent.png'; //hard coded local file, no no
+
+        data_layer.setStyle ({icon: tent_icon_green}); 
+        
+        data_layer.loadGeoJson('file:///Users/JakeGray/Desktop/unhcr_play/water_access/LAT3D73400_LON18D76178_RANGE25D000_200_2132.json');
+
+        data_layer_2.setStyle ({icon: tent_icon_yellow}); 
+        
+        data_layer_2.loadGeoJson('file:///Users/JakeGray/Desktop/unhcr_play/water_access/LAT3D73400_LON18D76178_RANGE25D000_500_2132.json');
+
+        data_layer_3.setStyle ({icon: tent_icon_red}); 
+        
+        data_layer_3.loadGeoJson('file:///Users/JakeGray/Desktop/unhcr_play/water_access/LAT3D73400_LON18D76178_RANGE25D000_0_2132.json');
+
+
+
+        var script = document.createElement('script');
+
+        
+        script.src = 'file:///Users/JakeGray/Desktop/unhcr_play/water_access/Boreholes_Boyabu.geojson.js';
+
+                
+        document.getElementsByTagName('head')[0].appendChild(script);
+      
+      }
+
+      // Loop through the results array and place a marker for each
+      // set of coordinates.
+      window.eqfeed_callback = function(results) {
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+          var image = 'file:///Users/JakeGray/Desktop/unhcr_play/water_access/well.png' //hard coded local file, big no no
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: image
+          });
+          var emergency_circle = new google.maps.Circle({
+            map: map,
+            radius: 500,
+            strokeColor: '#FF0000',
+            strokeWeight: 0.9,
+            fillOpacity: 0,
+
+          })
+          emergency_circle.bindTo('center',marker,'position');
+
+          var reg_circle = new google.maps.Circle({
+            map: map,
+            radius: 200,
+            strokeColor: '#FFFF00',
+            strokeWeight: 0.9,
+            fillOpacity: 0,
+
+          })
+          reg_circle.bindTo('center',marker,'position');
+
+      
+        }
+      }
+      
+    </script>
+
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4L0R6cn6IYfjOyVQuMMEwPHbbYk3Tv8I&callback=initMap"> //Jake's personal google maps API key
+    </script>
+  </body>
+</html>
